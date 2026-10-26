@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>رَواسي | منتجعات التخييم الصحراوي الفاخر ورصد النجوم في السعودية - Rawasi</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="رَواسي - منصة الضيافة الصحراوية الفاخرة ورصد النجوم في السعودية (العلا، عسير، تبوك حسمى، والبحر الأحمر). قباب زجاجية بانورامية، وسماء حالكة فئة 1 بمقياس بورتل." />
+  <meta name="keywords" content="رواسي, تخييم فاخر, رصد النجوم, سياحة العلا, السودة عسير, صحراء حسمى, البحر الأحمر, غلمبنغ السعودية, Rawasi, Luxury Glamping, Saudi Arabia, Stargazing Domes, Dark Sky" />
+  <meta name="author" content="Tareq0001" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="رَواسي | منتجعات التخييم الصحراوي الفاخر ورصد النجوم في السعودية" />
+  <meta property="og:description" content="استمتع بتجربة إقامة استثنائية من فئة الست نجوم تحت أنقى سماء لرصد النجوم والمجرات في المملكة العربية السعودية." />
+  <meta property="og:url" content="https://tareq0001.github.io/Rawasi-Luxury-Desert-Retreats/" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rawasi | Luxury Desert Retreats & Stargazing Sanctuaries" />
+  <meta name="twitter:description" content="Pristine Dark Sky Preserves, Geodesic Glass Domes & Royal Sadu Glamping across Saudi Arabia." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌌</text></svg>" />
+
+  <!-- Google Fonts: Cinzel, Playfair Display, Tajawal, Cairo, Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body class="lang-ar">
+  <!-- Top Navigation Bar -->
+  <nav class="site-nav">
+    <div class="container nav-container">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="nav-brand">
+        <div class="brand-symbol">✦</div>
+        <div class="brand-text-col">
+          <span class="brand-name font-serif" id="nav-brand-name">رَواسي</span>
+          <span class="brand-tagline" id="nav-brand-tagline">منتجعات التخييم الفاخر والمراصد</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link" id="nav-link-home">الرئيسية</a></li>
+        <li><a href="#observatory" class="nav-link" id="nav-link-observatory">المرصد الفلكي</a></li>
+        <li><a href="#retreats" class="nav-link" id="nav-link-retreats">أطلس الملاذات</a></li>
+        <li><a href="#configurator" class="nav-link" id="nav-link-configurator">استوديو التخصيص</a></li>
+        <li><a href="#weather" class="nav-link" id="nav-link-weather">حاسبة الطقس</a></li>
+      </ul>
+
+      <!-- Controls & Actions -->
+      <div class="nav-controls-group">
+        <!-- Audio Campfire Toggle -->
+        <button class="control-icon-btn" id="btn-audio-toggle" title="تشغيل صوت السمر الصحراوي (Web Audio API)">
+          <span id="audio-icon">🔥</span>
+        </button>
+
+        <!-- Theme Toggle (Dark Starlight <-> Sunlit Dunes) -->
+        <button class="control-icon-btn" id="btn-theme-toggle" title="تغيير المظهر (ليل / نهار)">
+          <span id="theme-icon">🌙</span>
+        </button>
+
+        <!-- Language Switcher (AR <-> EN) -->
+        <button class="lang-switch-btn" id="btn-lang-toggle">
+          <span id="lang-text">EN</span>
+        </button>
+
+        <!-- Instant Book CTA -->
+        <a href="#configurator" class="btn btn-primary btn-glow" id="nav-btn-book">
+          <span>احجز إقامتك</span>
+        </a>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Main Dynamic Application Container -->
+  <main id="app">
+    <!-- Populated by main.ts -->
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3 class="gradient-text-gold">رَواسي | RAWASI</h3>
+          <p id="footer-desc">
+            المنصة السعودية الرائدة للتخييم الصحراوي الفاخر ومحميات السماء المظلمة. نمزج بين أصالة الضيافة البدوية العريقة، والتقنيات الهندسية البيئية الذكية لرصد المجرات والكواكب.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 id="footer-dest-title">الملاذات الصحراوية</h4>
+          <ul>
+            <li><a href="#retreats">قباب وادي عِشار - العلا</a></li>
+            <li><a href="#retreats">أكواخ سحاب العرعر - السودة، عسير</a></li>
+            <li><a href="#retreats">مضارب حِسمى الملكية - تبوك</a></li>
+            <li><a href="#retreats">فلل الكثبان والشاطئ - البحر الأحمر</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 id="footer-astro-title">مرصد النجوم والفلك</h4>
+          <ul>
+            <li><a href="#observatory">محاكي مقياس بورتل 1</a></li>
+            <li><a href="#observatory">كوكبة الجبار وثريا الشتاء</a></li>
+            <li><a href="#observatory">أطوار القمر والتصوير الفلكي</a></li>
+            <li><a href="#weather">تجهيزات البرد الصحراوي</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div id="footer-copy">جميع الحقوق محفوظة © رَواسي 2026 • صُممت تماشياً مع رؤية السعودية 2030</div>
+        <div>AlUla • Asir • Hisma Tabuk • The Red Sea</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Overlays Container -->
+  <div id="modals-root"></div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
