@@ -12,6 +12,7 @@ import { renderConfiguratorView, renderPriceBreakdownHTML } from './ui/configura
 import { renderWeatherView } from './ui/weather-view';
 import { renderBookingModal, GuestDetails } from './ui/booking-modal';
 import { renderBoardingPassModal } from './ui/boarding-pass';
+import { motionFX } from './engine/motion-fx';
 
 class RawasiApp {
   private canvasEngine: StargazingCanvasEngine | null = null;
@@ -60,6 +61,7 @@ class RawasiApp {
     this.setupRetreatsEvents();
     this.setupConfiguratorEvents();
     this.setupWeatherEvents();
+    motionFX.init();
 
     // Re-render when language flips
     i18n.onLanguageChange(() => {
@@ -69,6 +71,7 @@ class RawasiApp {
       this.setupRetreatsEvents();
       this.setupConfiguratorEvents();
       this.setupWeatherEvents();
+      motionFX.init();
     });
   }
 
@@ -537,6 +540,9 @@ class RawasiApp {
       this.configSelection,
       breakdown
     );
+
+    // Trigger Celebration Stardust Confetti!
+    motionFX.triggerGoldenConfetti();
 
     // Print Pass
     const printBtn = document.getElementById('btn-print-pass');

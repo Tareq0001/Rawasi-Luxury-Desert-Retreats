@@ -39,19 +39,19 @@ export function renderHero(): string {
         </div>
 
         <div class="hero-stats-grid">
-          <div class="stat-card glass-panel">
+          <div class="stat-card glass-panel tilt-card">
             <div class="stat-icon">🌌</div>
-            <div class="stat-value gradient-text-gold">${i18n.t('heroStatBortle')}</div>
+            <div class="stat-value gradient-text-gold" data-counter="1.0" data-suffix=" Bortle">${i18n.t('heroStatBortle')}</div>
             <div class="stat-desc">${i18n.t('heroStatBortleDesc')}</div>
           </div>
-          <div class="stat-card glass-panel">
+          <div class="stat-card glass-panel tilt-card">
             <div class="stat-icon">⛰️</div>
-            <div class="stat-value gradient-text-gold">${i18n.t('heroStatAlt')}</div>
+            <div class="stat-value gradient-text-gold" data-counter="3015" data-suffix="m">${i18n.t('heroStatAlt')}</div>
             <div class="stat-desc">${i18n.t('heroStatAltDesc')}</div>
           </div>
-          <div class="stat-card glass-panel">
+          <div class="stat-card glass-panel tilt-card">
             <div class="stat-icon">📜</div>
-            <div class="stat-value gradient-text-gold">${i18n.t('heroStatHeritage')}</div>
+            <div class="stat-value gradient-text-gold" data-counter="100" data-suffix="%">${i18n.t('heroStatHeritage')}</div>
             <div class="stat-desc">${i18n.t('heroStatHeritageDesc')}</div>
           </div>
         </div>

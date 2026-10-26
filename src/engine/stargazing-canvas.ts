@@ -22,11 +22,24 @@ interface Meteor {
   life: number;
 }
 
+interface Ember {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  radius: number;
+  alpha: number;
+  color: string;
+  sway: number;
+  swaySpeed: number;
+}
+
 export class StargazingCanvasEngine {
   private canvas: HTMLCanvasElement;
   private ctx: CanvasRenderingContext2D;
   private stars: CanvasStar[] = [];
   private meteors: Meteor[] = [];
+  private embers: Ember[] = [];
   private animFrameId: number | null = null;
   private activeConstellationId: string = 'orion';
   private hoveredStar: StarNode | null = null;
@@ -147,25 +160,66 @@ export class StargazingCanvasEngine {
   }
 
   private spawnMeteor() {
-    if (Math.random() > (this.bortleScale === 1 ? 0.035 : 0.015)) return;
-    if (this.meteors.length > 3) return;
+    if (Math.random() > (this.bortleScale === 1 ? 0.08 : 0.04)) return;
+    if (this.meteors.length > 5) return;
 
     const rect = this.canvas.getBoundingClientRect();
     const startX = Math.random() * rect.width;
     const startY = Math.random() * (rect.height * 0.4);
     const angle = (Math.PI / 4) + (Math.random() - 0.5) * 0.4;
-    const speed = Math.random() * 8 + 12;
+    const speed = Math.random() * 10 + 14;
 
     this.meteors.push({
       x: startX,
       y: startY,
       dx: Math.cos(angle) * speed,
       dy: Math.sin(angle) * speed,
-      len: Math.random() * 70 + 60,
+      len: Math.random() * 90 + 80,
       speed,
       alpha: 1,
       life: 1
     });
+  }
+
+  private updateAndDrawEmbers(w: number, h: number) {
+    // Spawn floating campfire embers
+    if (this.embers.length < 35 && Math.random() < 0.3) {
+      const colors = ['#f59e0b', '#d97706', '#ea580c', '#fef08a'];
+      this.embers.push({
+        x: Math.random() * w,
+        y: h + 10,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: -(Math.random() * 1.5 + 0.8),
+        radius: Math.random() * 1.8 + 0.8,
+        alpha: Math.random() * 0.7 + 0.3,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        sway: Math.random() * Math.PI * 2,
+        swaySpeed: Math.random() * 0.03 + 0.01
+      });
+    }
+
+    for (let i = this.embers.length - 1; i >= 0; i--) {
+      const ember = this.embers[i];
+      ember.sway += ember.swaySpeed;
+      ember.x += ember.vx + Math.sin(ember.sway) * 0.8;
+      ember.y += ember.vy;
+      ember.alpha -= 0.0025;
+
+      if (ember.y < -20 || ember.alpha <= 0) {
+        this.embers.splice(i, 1);
+        continue;
+      }
+
+      this.ctx.save();
+      this.ctx.globalAlpha = Math.max(0, ember.alpha);
+      this.ctx.fillStyle = ember.color;
+      this.ctx.shadowBlur = 8;
+      this.ctx.shadowColor = ember.color;
+      this.ctx.beginPath();
+      this.ctx.arc(ember.x, ember.y, ember.radius, 0, Math.PI * 2);
+      this.ctx.fill();
+      this.ctx.restore();
+    }
   }
 
   private getConstellationStarCoords(star: StarNode, width: number, height: number): { x: number; y: number } {
@@ -208,7 +262,10 @@ export class StargazingCanvasEngine {
     this.spawnMeteor();
     this.drawMeteors();
 
-    // 5. Draw Light Pollution Fog for suburban Bortle (if Bortle > 1)
+    // 5. Update & Draw Floating Campfire Embers
+    this.updateAndDrawEmbers(w, h);
+
+    // 6. Draw Light Pollution Fog for suburban Bortle (if Bortle > 1)
     if (this.bortleScale > 1) {
       this.drawBortleLightPollution(w, h);
     }

@@ -2436,3 +2436,123 @@ body.lang-ar .stub-notch {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ==========================================================================
+   CINEMATIC ANIMATIONS & 3D MOTION ENGINE (UI/UX Pro Max)
+   ========================================================================== */
+
+/* 3D Perspective Card Tilt & Mouse Specular Spotlight */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  position: relative;
+  will-change: transform;
+}
+
+.tilt-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(600px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(245, 158, 11, 0.16), transparent 45%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.tilt-card:hover::before {
+  opacity: 1;
+}
+
+/* Border Beam Shimmer */
+.retreat-card, .spec-card, .pricing-summary-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.retreat-card::after, .pricing-summary-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent 0 340deg, rgba(245, 158, 11, 0.6) 360deg);
+  animation: borderRotate 6s linear infinite;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.retreat-card:hover::after, .pricing-summary-card:hover::after {
+  opacity: 1;
+}
+
+@keyframes borderRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Golden Light Sweep on Titles */
+.gradient-text-gold {
+  background: linear-gradient(90deg, #f59e0b 0%, #fef08a 25%, #d97706 50%, #fef08a 75%, #f59e0b 100%) !important;
+  background-size: 200% auto !important;
+  color: transparent !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  animation: textShimmer 4s linear infinite;
+}
+
+@keyframes textShimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+/* Aurora Breathing Glow */
+.hero-glow-aurora {
+  position: absolute;
+  top: -15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 950px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, rgba(245, 158, 11, 0.15) 35%, transparent 70%);
+  filter: blur(85px);
+  pointer-events: none;
+  animation: auroraBreath 7s ease-in-out infinite alternate;
+}
+
+@keyframes auroraBreath {
+  0% { transform: translateX(-50%) scale(0.92); opacity: 0.65; }
+  100% { transform: translateX(-50%) scale(1.12); opacity: 1; }
+}
+
+/* Button Pulse & Glow */
+.btn-primary.btn-glow {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary.btn-glow::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: 0.5s;
+}
+
+.btn-primary.btn-glow:hover::after {
+  left: 100%;
+}
+
+.btn-primary.btn-glow:hover {
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.55), 0 10px 25px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
